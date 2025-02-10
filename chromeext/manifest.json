@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Motivational Blocker",
+  "version": "1.0",
+  "description": "Blocks specific websites and displays a motivational page instead.",
+  "permissions": [
+    "declarativeNetRequest",
+    "declarativeNetRequestWithHostAccess",
+    "storage"
+  ],
+  "host_permissions": [
+    "*://*/*"
+  ],
+  "action": {
+    "default_popup": "templates/popup.html",
+    "default_icon": {
+
+    }
+  },
+  "incognito": "spanning"
+}

@@ -1,0 +1,31 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    font-family: "Inter", serif;
+    background-image: url("../images/seoul_background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+#motivation {
+    backdrop-filter: blur(8px);
+    font-weight: 50%;
+    padding: 5px;
+    animation: fadeIn 3s;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 100; }
+}
+
+h1 {
+    color: white;
+    margin: 0;
+}
