@@ -4,7 +4,6 @@ body {
     align-items: center;
     font-size: 15px;
     font-family: "Inter", serif;
-    background-image: url("../images/seoul_background.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -14,10 +13,18 @@ body {
 }
 
 #motivation {
-    backdrop-filter: blur(8px);
     font-weight: 50%;
-    padding: 5px;
+    padding: 20px;
     animation: fadeIn 3s;
+    
+    /* blur the background and blend it with the image */
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    border-radius: 15px;
+
+    /* apply a radial gradient mask so the center is opaque and edges fade out */
+    mask-image: radial-gradient(ellipse at center, rgba(255,255,255,1) 60%, rgba(255,255,255,0) 100%);
+    -webkit-mask-image: radial-gradient(ellipse at center, rgba(255,255,255,1) 60%, rgba(255,255,255,0) 100%);
 }
 
 @keyframes fadeIn {
@@ -28,4 +35,30 @@ body {
 h1 {
     color: white;
     margin: 0;
+}
+
+/* styling for the background slideshow */
+.bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 3.5s ease-in-out;
+    animation: grow 10s;
+    z-index: -1;
+}
+
+/* active div is the one shown */
+.bg.active {
+    opacity: 1;
+}
+
+@keyframes grow {
+    0% { size: 100% }
+    100% {size: 105% }
 }
