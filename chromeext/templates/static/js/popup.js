@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const siteInput = document.getElementById('siteInput');
   const addSiteButton = document.getElementById('addSite');
   const siteList = document.getElementById('siteList');
+  const statusBox = document.getElementById('status');
+
+  statusBox.value = "Nothing to display";
 
   // Load blocked sites from storage and update the UI
   chrome.storage.local.get(['blockedSites'], (result) => {
@@ -24,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
           updateSiteList(blockedSites);
           updateDynamicRules(blockedSites);
           siteInput.value = "";
+          updateStatus("Site added");
         });
       }
     });
@@ -54,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
       chrome.storage.local.set({ blockedSites }, () => {
         updateSiteList(blockedSites);
         updateDynamicRules(blockedSites);
+        updateStatus("Site removed");
       });
     });
   }
@@ -77,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Get all dynamic rules currently active
     chrome.declarativeNetRequest.getDynamicRules((currentRules) => {
       const currentRuleIds = currentRules.map(rule => rule.id);
-      
+
       // Update the rules: remove current ones and add the new set
       chrome.declarativeNetRequest.updateDynamicRules({
         removeRuleIds: currentRuleIds,
@@ -104,13 +109,32 @@ document.addEventListener('DOMContentLoaded', () => {
       if (chrome.runtime.lastError) {
         console.error("Error saving message:", chrome.runtime.lastError);
       } else {
-        console.log("Motivational message saved:", message);
+        console.log("Message saved:", message);
         motivationalMessage.value = "";
+        updateStatus("Message saved");
       }
     });
   })
-});
 
+  const clearMessage = document.getElementById("clearMessage");
+
+  clearMessage.addEventListener('click', () => {
+    chrome.storage.local.set({ motivationalMessage: "" }, () => {
+      if (chrome.runtime.lastError) {
+        console.error("Error saving message:", chrome.runtime.lastError);
+      } else {
+        updateStatus("Message cleared");
+      } 
+    });
+  })
+
+  function updateStatus(message, duration = 3000) {
+    statusBox.textContent = message;
+    setTimeout(() => {
+      statusBox.textContent = "Nothing to display";
+    }, duration);
+  }
+});
 
 function escapeRegExp(string) {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
