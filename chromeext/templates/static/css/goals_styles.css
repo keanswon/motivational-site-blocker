@@ -2,7 +2,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 15px;
     font-family: "Inter", serif;
     background-position: center;
     background-repeat: no-repeat;
@@ -10,21 +9,27 @@ body {
     height: 100vh;
     margin: 0;
     overflow: hidden;
+    animation: fadeIn 2s
 }
 
-#motivation {
+.text {
     font-weight: 50%;
     padding: 20px;
-    animation: fadeIn 3s;
+    animation: fadeIn 4s;
     
     /* blur the background and blend it with the image */
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
     border-radius: 15px;
 
     /* apply a radial gradient mask so the center is opaque and edges fade out */
     mask-image: radial-gradient(ellipse at center, rgba(255,255,255,1) 60%, rgba(255,255,255,0) 100%);
     -webkit-mask-image: radial-gradient(ellipse at center, rgba(255,255,255,1) 60%, rgba(255,255,255,0) 100%);
+
+    /* center text */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 @keyframes fadeIn {
@@ -32,9 +37,16 @@ body {
     100% { opacity: 100; }
 }
 
-h1 {
+h1, h2 {
     color: white;
     margin: 0;
+    max-width: 500px;
+    text-align: center;
+    font-size: 28px;
+}
+
+h2 {
+    font-size: 19px;
 }
 
 /* styling for the background slideshow */

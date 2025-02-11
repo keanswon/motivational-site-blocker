@@ -4,14 +4,25 @@
   <meta charset="UTF-8">
   <title>Manage Blocked Sites</title>
   <link rel="stylesheet" href="static/css/popup_styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect " href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
   <h2>Blocked Sites</h2>
   <ul id="siteList"></ul>
-  <div>
-    <input type="text" id="siteInput" placeholder="Enter website URL">
-    <button id="addSite">Add</button>
+  <div id="submitcontainer">
+    <input type="text" id="siteInput" class="inputbox" placeholder="Enter website URL">
+    <button id="addSite" class="submitbutton">Add</button>
+
+    <input type="text" id="motivationalMessage" class="inputbox" placeholder="Display message:">
+    <button id="saveMessage" class="submitbutton">Save</button>
+    <button id="clearMessage" class="submitbutton">Clear</button>
+  </div>
+  <!--small blurb at the bottom to show user that requests went through-->
+  <div id="status">
+
   </div>
   <script src="static/js/popup.js"></script>
 </body>

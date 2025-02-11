@@ -1,7 +1,7 @@
 body {
-  font-family: Arial, sans-serif;
   width: 300px;
   padding: 10px;
+  font-family: "Inter", serif;
 }
 h2 {
   margin-top: 0;
@@ -20,6 +20,34 @@ button {
   margin-left: 10px;
 }
 input {
-  width: calc(100% - 50px);
+  width: 100%;
   padding: 5px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+input:focus {
+  border-color: #000000; /* Adjust color if needed */
+  box-shadow: 0 0 5px rgba(0, 86, 179, 0.5);
+}
+
+.submitbutton {
+  size: 75%;
+  border: none;
+  background-color: rgb(221, 221, 221);
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.submitbutton:hover {
+  background-color: rgb(195, 195, 195);
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 86, 179, 0.5);
+}
+
+#submitcontainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
