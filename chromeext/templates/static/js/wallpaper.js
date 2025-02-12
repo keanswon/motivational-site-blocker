@@ -10,6 +10,9 @@ const images = [
     "static/images/background9.jpg",
     "static/images/background10.jpg",
     "static/images/background11.jpg",
+    "static/images/background12.jpg",
+    "static/images/background13.jpg",
+    "static/images/background14.jpg",
 ]
 
 // randomly pick images to go next

@@ -1,4 +1,5 @@
 // popup.js
+
 document.addEventListener('DOMContentLoaded', () => {
   // Take elements from popup.html
   const siteInput = document.getElementById('siteInput');
@@ -74,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         redirect: { url: chrome.runtime.getURL("templates/goals.html") }
       },
       condition: {
-        regexFilter: "^(.*" + escapeRegExp(site) + ".*)$",
+        regexFilter: "^(https?:\\/\\/.*" + escapeRegExp(site) + ".*)$",
         resourceTypes: ["main_frame"]
       }
     }));
@@ -119,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const clearMessage = document.getElementById("clearMessage");
 
   clearMessage.addEventListener('click', () => {
-    chrome.storage.local.set({ motivationalMessage: "" }, () => {
+    chrome.storage.local.set({ motivationalMessage: null }, () => {
       if (chrome.runtime.lastError) {
         console.error("Error saving message:", chrome.runtime.lastError);
       } else {
